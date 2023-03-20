@@ -19,6 +19,10 @@ ScreenGui.Parent = CoreGui;
 local Toggles = {};
 local Options = {};
 
+if getgenv().Misunion then
+    Misunion.Toggles = Toggles;
+    Misunion.Options = Options;
+end
 getgenv().Toggles = Toggles;
 getgenv().Options = Options;
 
