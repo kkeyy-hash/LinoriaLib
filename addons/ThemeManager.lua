@@ -88,7 +88,7 @@ local ThemeManager = {} do
 			self:SaveDefault(Options.ThemeManager_ThemeList.Value)
 			self.Library:Notify(string.format('Set default theme to %q', Options.ThemeManager_ThemeList.Value))
 		end)
-		self:ApplyTheme("default")
+		self:ApplyTheme("Default")
 
 		groupbox:AddDivider()
 		groupbox:AddDropdown('ThemeManager_CustomThemeList', { Text = 'Custom themes', Values = self:ReloadCustomThemes(), AllowNull = true, Default = 1 })
