@@ -1,10 +1,10 @@
 local MenuManager = {} do
-	function MenuManager:BuildMenuSection(tab)
-	    local MenuGroup = Script.Tabs["Settings"]:AddLeftGroupbox("Menu")
-  	    MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "LeftAlt", NoUI = true, Text = "Menu keybind" })
-       	MenuGroup:AddButton("Unload", function() 
-  	        Library:Unload() 
-  	    end)
+    function MenuManager:BuildMenuSection(tab)
+        local MenuGroup = Script.Tabs["Settings"]:AddLeftGroupbox("Menu")
+        MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "LeftAlt", NoUI = true, Text = "Menu keybind" })
+        MenuGroup:AddButton("Unload", function() 
+            Library:Unload() 
+        end)
       	MenuGroup:AddButton("Copy Discord", function()
       	    setclipboard("https://discord.gg/8dxUzPna86")
       	end)
@@ -25,7 +25,7 @@ local MenuManager = {} do
         	    })
    	        })
        	end)
-   	    Library.ToggleKeybind = Options.MenuKeybind
-	end
+        Library.ToggleKeybind = Options.MenuKeybind
+    end
 end
 return MenuManager
