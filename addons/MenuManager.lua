@@ -1,6 +1,16 @@
 local MenuManager = {} do
+    MenuManager.Library = nil
+    
+    function MenuManager:SetLibrary(lib)
+		self.Library = lib
+	end
+    
+    MenuManager.Library:OnUnload(function()
+        MenuManager.Library.Unloaded = true
+    end)
+    
     function MenuManager:BuildMenuSection(tab)
-        local MenuGroup = Script.Tabs["Settings"]:AddLeftGroupbox("Menu")
+        local MenuGroup = tab:AddLeftGroupbox("Menu")
         MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "LeftAlt", NoUI = true, Text = "Menu keybind" })
         MenuGroup:AddButton("Unload", function() 
             Library:Unload() 
