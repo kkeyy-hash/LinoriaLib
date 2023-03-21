@@ -13,7 +13,7 @@ local MenuManager = {} do
         local MenuGroup = tab:AddLeftGroupbox("Menu")
         MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "LeftAlt", NoUI = true, Text = "Menu keybind" })
         MenuGroup:AddButton("Unload", function() 
-            Library:Unload() 
+            MenuManager.Library:Unload() 
         end)
       	MenuGroup:AddButton("Copy Discord", function()
       	    setclipboard("https://discord.gg/8dxUzPna86")
@@ -35,7 +35,7 @@ local MenuManager = {} do
         	    })
    	        })
        	end)
-        Library.ToggleKeybind = Options.MenuKeybind
+        MenuManager.Library.ToggleKeybind = Options.MenuKeybind
     end
 end
 return MenuManager
