@@ -6,9 +6,9 @@ local MenuManager = {} do
     end
     
     function MenuManager:BuildMenuSection(tab)
-	 MenuManager.Library:OnUnload(function()
-             MenuManager.Library.Unloaded = true
-         end)
+	MenuManager.Library:OnUnload(function()
+            MenuManager.Library.Unloaded = true
+        end)
 
         local MenuGroup = tab:AddLeftGroupbox("Menu")
         MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "LeftAlt", NoUI = true, Text = "Menu keybind" })
