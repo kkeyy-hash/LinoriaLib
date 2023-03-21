@@ -19,10 +19,6 @@ ScreenGui.Parent = CoreGui;
 local Toggles = {};
 local Options = {};
 
-if getgenv().Misunion then
-    Misunion.Toggles = Toggles;
-    Misunion.Options = Options;
-end
 getgenv().Toggles = Toggles;
 getgenv().Options = Options;
 
@@ -2577,6 +2573,32 @@ function Library:SetWatermark(Text)
 
     Library.WatermarkText.Text = Text;
 end;
+
+local Cooldown = false
+local function OrdinalDay(dayn)
+    last_digit = dayn % 10
+    if last_digit == 1 and dayn ~= 11 then 
+        return "st"
+    elseif last_digit == 2 and dayn ~= 12 then 
+        return "nd"
+    elseif last_digit == 3 and dayn ~= 13 then 
+        return "rd"
+    else 
+        return "th"
+    end
+end
+table.insert(Library.Signals, RenderStepped:Connect(function()
+    Cooldown = true
+    
+    if Cooldown then
+        task.wait(1)
+        local Year, Day, Month, Time = os.date("%Y"), os.date("%d") .. OrdinalDay(os.date("%d")), os.date("%B"), os.date("%X")
+        local FullTime =  Time .. " " .. Day .. " " .. Month .. ", " .. Year
+        Library:SetWatermark("misunion.wtf | " .. FullTime)
+        Cooldown = false
+    end
+end))
+Library:SetWatermarkVisibility(true)
 
 function Library:Notify(Text, Time)
     local XSize, YSize = Library:GetTextBounds(Text, Library.Font, 14);
